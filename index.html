@@ -1,264 +1,267 @@
 <!doctype html>
+
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sellynt — клиент Minecraft 1.16.5</title>
-  <meta name="description" content="Sellynt — минималистичный, лёгкий клиент для Minecraft 1.16.5. Скачать, новости и сообщества (Telegram / Discord)." />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sellynt Client — Minecraft 1.16.5</title>
+  <meta name="description" content="Sellynt Client — минималистичный клиент Minecraft 1.16.5. Скачать, новости, сообщества (Telegram / Discord)." />
   <style>
-    :root{
-      --bg:#0b0b0b;
-      --surface:#0f0f0f;
-      --muted:#a7a7a7;
-      --accent:#ffffff;
-      --glass: rgba(255,255,255,0.03);
-      --radius:14px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-gradient: linear-gradient(180deg, #0a0a0a 0%, #070707 100%);
+      --surface: #121212;
+      --accent: #ffffff;
+      --muted: #a7a7a7;
+      --btn-gradient: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      --radius: 16px;
+      font-family: 'Inter', sans-serif;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,var(--bg),#070707 60%);
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding:48px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-gradient);
+      color: var(--accent);
+      font-size: 16px;
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
     }
-    .container{
-      width:100%;
-      max-width:980px;
-      background:linear-gradient(180deg,var(--surface), #070707);
-      border-radius:18px;
-      padding:40px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.03);
+    a { text-decoration: none; color: inherit; }
+    .container {
+      max-width: 960px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
     }
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
     }
-    .brand{display:flex;align-items:center;gap:14px;}
-    .logo{
-      width:56px;height:56px;
-      display:grid;place-items:center;
-      background:var(--glass);
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.04);
-      overflow:hidden; 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    .logo-img { width:40px;height:40px;object-fit:contain;display:block;opacity:0.95;background:none; }
-
-    .title{font-size:20px;font-weight:600;letter-spacing:-0.02em}
-    .subtitle{color:var(--muted);font-size:13px;margin-top:4px}
-
-    .btn{
-      appearance:none;border:0;padding:12px 18px;border-radius:12px;font-weight:600;cursor:pointer;
-      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
-      color:var(--accent);
-      border:1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      display: grid;
+      place-items: center;
+    }
+    .logo img { width: 48px; height: 48px; object-fit: contain; }
+    .titles {
+      display: flex;
+      flex-direction: column;
+    }
+    .titles .title { font-size: 24px; font-weight: 700; }
+    .titles .subtitle { font-size: 14px; color: var(--muted); margin-top: 2px; }
+    .lang-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--btn-gradient);
+      cursor: pointer;
+      font-weight: 600;
       transition: transform 0.15s ease;
     }
-    .btn:active{transform:translateY(1px)}
-
-    .icon-link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:12px;
-      text-decoration:none;
-      color:var(--accent);
-      border:1px solid rgba(255,255,255,0.03);
-      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
-      font-size:13px;
-      font-weight:600;
+    .lang-btn:active { transform: translateY(1px); }
+    main {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .features { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .chip {
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-download {
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--btn-gradient);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       transition: transform 0.15s ease;
     }
-    .icon-link img{width:24px;height:24px;object-fit:contain;}
-    .icon-link.discord img{width:28px;height:28px;} /* увеличена иконка Discord */
-    .icon-link:hover{transform:translateY(-2px);}
-
-    main{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
-    .hero{padding:18px 6px}
-    h1{margin:0;font-size:34px;line-height:1.05}
-    p.lead{color:var(--muted);margin-top:12px;font-size:15px}
-    .features{display:flex;flex-direction:column;gap:12px;margin-top:22px}
-    .chip{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
-    .cta-row{display:flex;gap:12px;margin-top:20px;align-items:center}
-
-    .side{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.03);height:100%;display:flex;flex-direction:column;gap:14px;align-items:stretch;justify-content:flex-start}
-    .meta{display:flex;flex-direction:column;gap:4px}
-    .meta small{color:var(--muted)}
-    .links{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-    .social{display:flex;flex-direction:column;gap:8px}
-    .card-row{display:flex;gap:8px}
-    .small{font-size:13px;color:var(--muted)}
-    footer{margin-top:22px;border-top:1px dashed rgba(255,255,255,0.02);padding-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
-
-    @media(max-width:880px){main{grid-template-columns:1fr}.side{order:-1}}
-    .logo, .btn{transition:transform .18s ease, box-shadow .18s ease}
-    .logo:hover{transform:translateY(-2px)}
-    a:focus, button:focus{outline:2px solid rgba(255,255,255,0.08);outline-offset:3px}
-    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:36px;background:rgba(255,255,255,0.04);color:var(--accent);padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(4px);display:none}
-    .toast.show{display:block}
-
-    .lang-btn{margin-left:10px;}
+    .btn-download:active { transform: translateY(1px); }
+    .btn-download img { width: 24px; height: 24px; }
+    aside.side {
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .side .section-title { font-weight: 700; margin-bottom: 6px; }
+    .side .small { font-size: 13px; color: var(--muted); }
+    .social-links { display: flex; flex-direction: column; gap: 12px; }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: transform 0.15s ease;
+    }
+    .social-links a img { width: 28px; height: 28px; }
+    .social-links a:hover { transform: translateY(-2px); }
+    footer { margin-top: 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.05);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      color: var(--accent);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: none;
+      backdrop-filter: blur(4px);
+    }
+    .toast.show { display: block; }
+    @media(max-width: 880px){
+      main { grid-template-columns: 1fr; }
+      aside.side { order: -1; }
+    }
   </style>
 </head>
 <body>
-  <div class="container" role="main">
+  <div class="container">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <img src="logo2.png" alt="Sellynt Logo" class="logo-img" />
-        </div>
-        <div>
-          <div class="title" id="title">Sellynt</div>
-          <div class="subtitle" id="subtitle">Sellynt Client — минимализм, скорость, стабильность</div>
+        <div class="logo"><img src="logo2.png" alt="Sellynt Logo"></div>
+        <div class="titles">
+          <div class="title" id="title">Sellynt Client</div>
+          <div class="subtitle" id="subtitle">Минималистичный клиент Minecraft 1.16.5</div>
         </div>
       </div>
-      <button class="btn lang-btn" id="langBtn">EN</button>
+      <button class="lang-btn" id="langBtn">EN</button>
     </header>
 
-    <main>
-      <section class="hero">
-        <h1 id="heroTitle">Лёгкий и минималистичный клиент для Minecraft 1.16.5</h1>
-        <p class="lead" id="heroLead">Sellynt Client — это клиент, сконцентрированный на производительности и удобстве: аккуратный интерфейс. Подходит для одиночной игры и серверов 1.16.5</p>
+```
+<main>
+  <section class="hero">
+    <h1 id="heroTitle">Лёгкий и минималистичный клиент для Minecraft 1.16.5</h1>
+    <p id="heroLead">Sellynt — это клиент с аккуратным интерфейсом, стабильными модами и быстрым запуском. Подходит для одиночной игры и серверов 1.16.5.</p>
+    <div class="features">
+      <span class="chip" id="f1">Совместимость 1.16.5</span>
+      <span class="chip" id="f2">Оптимизация FPS</span>
+      <span class="chip" id="f3">Минималистичный GUI</span>
+      <span class="chip" id="f4">Простая установка</span>
+    </div>
+    <button class="btn-download" id="downloadBtn">
+      <img src="download.png" alt="Download Icon"> <span id="downloadText">Скачать Sellynt</span>
+    </button>
+  </section>
 
-        <div class="features" id="features">
-          <span class="chip" id="f1">Совместимость 1.16.5</span>
-          <span class="chip" id="f2">Оптимизация FPS</span>
-          <span class="chip" id="f3">Минималистичный интерфейс</span>
-          <span class="chip" id="f4">Простая установка</span>
-        </div>
+  <aside class="side">
+    <div>
+      <div class="section-title" id="versionLabel">Версия</div>
+      <div class="small" id="versionText">1.0.0 — Minecraft 1.16.5</div>
+    </div>
+    <div>
+      <div class="section-title" id="sizeLabel">Размер</div>
+      <div class="small" id="sizeText">~12 MB</div>
+    </div>
+    <div>
+      <div class="section-title" id="communityLabel">Сообщества</div>
+      <div class="social-links">
+        <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">
+          <img src="tg.png" alt="Telegram"><span id="telegramLabel">Telegram</span>
+        </a>
+        <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
+          <img src="discord.png" alt="Discord"><span id="discordLabel">Discord</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="section-title" id="supportLabel">Поддержка</div>
+      <div class="social-links">
+        <a href="#" onclick="openSupport(event)" id="docLabel">Документация</a>
+        <a href="#" onclick="openReport(event)" id="reportLabel">Сообщить об ошибке</a>
+      </div>
+    </div>
+  </aside>
+</main>
 
-        <div class="cta-row">
-          <button class="btn" id="downloadBtn" aria-label="Скачать Sellynt для Minecraft 1.16.5">Скачать Sellynt (1.16.5)</button>
-        </div>
-      </section>
+<footer>
+  <div>© Sellynt Client — Minecraft 1.16.5</div>
+  <div class="small">Ссылки: <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">Discord</a></div>
+</footer>
+```
 
-      <aside class="side" aria-label="Боковая панель">
-        <div class="meta">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-weight:700" id="versionLabel">Версия</div>
-              <small class="small" id="versionText">1.1.0 — Minecraft 1.16.5</small>
-            </div>
-            <div style="text-align:right">
-              <div style="font-weight:700" id="sizeLabel">Размер</div>
-              <small class="small" id="sizeText">~12 MB</small>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:6px">
-          <div class="small" id="communityLabel">Сообщества</div>
-          <div class="links">
-            <div class="social">
-              <a class="icon-link" href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">
-                <img src="tg.png" alt="Telegram" />
-                <span id="telegramLabel">Telegram</span>
-              </a>
-              <a class="icon-link discord" href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
-                <img src="discord.png" alt="Discord" />
-                <span id="discordLabel">Discord</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:auto">
-          <div class="small" id="supportLabel">Поддержка</div>
-          <div class="card-row" style="margin-top:8px">
-            <a class="icon-link" href="#" onclick="openSupport(event)" id="docLabel">Документация</a>
-            <a class="icon-link" href="#" onclick="openReport(event)" id="reportLabel">Сообщить об ошибке</a>
-          </div>
-        </div>
-
-      </aside>
-    </main>
-
-    <footer>
-      <div id="footerCopy">© Sellynt — клиент для Minecraft 1.16.5</div>
-      <div class="small">Ссылки: <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline" id="footerTelegram">Telegram</a> · <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline" id="footerDiscord">Discord</a></div>
-    </footer>
   </div>
 
-  <div class="toast" id="toast">Подготовка загрузки…</div>
+  <div class="toast" id="toast"></div>
 
   <script>
     const DOWNLOAD_URL = 'Sellynt-Loader.exe';
     let isEnglish = false;
-
     const texts = {
       ru: {
         heroTitle: "Лёгкий и минималистичный клиент для Minecraft 1.16.5",
-        heroLead: "Sellynt — это клиент, сконцентрированный на производительности и удобстве: аккуратный интерфейс, стабильные моды и быстрый запуск. Подходит для одиночной игры и серверов 1.16.5.",
-        f1: "Совместимость 1.16.5",
-        f2: "Оптимизация FPS",
-        f3: "Минималистичный GUI",
-        f4: "Простая установка",
-        downloadBtn: "Скачать Sellynt (1.16.5)",
-        versionLabel: "Версия",
-        versionText: "1.0.0 — Minecraft 1.16.5",
-        sizeLabel: "Размер",
-        sizeText: "~12 MB",
-        communityLabel: "Сообщества",
-        telegramLabel: "Telegram",
-        discordLabel: "Discord",
-        supportLabel: "Поддержка",
-        docLabel: "Документация",
-        reportLabel: "Сообщить об ошибке",
-        footerCopy: "© Sellynt — клиент для Minecraft 1.16.5",
-        footerTelegram: "Telegram",
-        footerDiscord: "Discord",
-        downloadToast: "Загрузка..."
+        heroLead: "Sellynt — это клиент с аккуратным интерфейсом, стабильными модами и быстрым запуском. Подходит для одиночной игры и серверов 1.16.5.",
+        f1: "Совместимость 1.16.5", f2: "Оптимизация FPS", f3: "Минималистичный GUI", f4: "Простая установка",
+        downloadText: "Скачать Sellynt",
+        versionLabel: "Версия", versionText: "1.0.0 — Minecraft 1.16.5",
+        sizeLabel: "Размер", sizeText: "~12 MB",
+        communityLabel: "Сообщества", telegramLabel: "Telegram", discordLabel: "Discord",
+        supportLabel: "Поддержка", docLabel: "Документация", reportLabel: "Сообщить об ошибке"
       },
       en: {
         heroTitle: "Lightweight and minimalist client for Minecraft 1.16.5",
-        heroLead: "Sellynt Client is a client focused on performance and usability, featuring a clean interface. Suitable for single-player and 1.16.5 servers",
-        f1: "Compatibility 1.16.5",
-        f2: "FPS Optimization",
-        f3: "Minimalist GUI",
-        f4: "Easy Installation",
-        downloadBtn: "Download Sellynt (1.16.5)",
-        versionLabel: "Version",
-        versionText: "1.0.0 — Minecraft 1.16.5",
-        sizeLabel: "Size",
-        sizeText: "~12 MB",
-        communityLabel: "Communities",
-        telegramLabel: "Telegram",
-        discordLabel: "Discord",
-        supportLabel: "Support",
-        docLabel: "Documentation",
-        reportLabel: "Report Bug",
-        footerCopy: "© Sellynt — Minecraft 1.16.5 client",
-        footerTelegram: "Telegram",
-        footerDiscord: "Discord",
-        downloadToast: "Redirecting to download..."
+        heroLead: "Sellynt is a client with a clean interface, stable mods, and fast launch. Suitable for singleplayer and 1.16.5 servers.",
+        f1: "Compatibility 1.16.5", f2: "FPS Optimization", f3: "Minimalist GUI", f4: "Easy Installation",
+        downloadText: "Download Sellynt",
+        versionLabel: "Version", versionText: "1.0.0 — Minecraft 1.16.5",
+        sizeLabel: "Size", sizeText: "~12 MB",
+        communityLabel: "Communities", telegramLabel: "Telegram", discordLabel: "Discord",
+        supportLabel: "Support", docLabel: "Documentation", reportLabel: "Report Bug"
       }
     };
-
     function toggleLanguage() {
       isEnglish = !isEnglish;
       const lang = isEnglish ? 'en' : 'ru';
-
       document.getElementById('heroTitle').textContent = texts[lang].heroTitle;
       document.getElementById('heroLead').textContent = texts[lang].heroLead;
       document.getElementById('f1').textContent = texts[lang].f1;
       document.getElementById('f2').textContent = texts[lang].f2;
       document.getElementById('f3').textContent = texts[lang].f3;
       document.getElementById('f4').textContent = texts[lang].f4;
-      document.getElementById('downloadBtn').textContent = texts[lang].downloadBtn;
+      document.getElementById('downloadText').textContent = texts[lang].downloadText;
       document.getElementById('versionLabel').textContent = texts[lang].versionLabel;
       document.getElementById('versionText').textContent = texts[lang].versionText;
       document.getElementById('sizeLabel').textContent = texts[lang].sizeLabel;
@@ -269,17 +272,12 @@
       document.getElementById('supportLabel').textContent = texts[lang].supportLabel;
       document.getElementById('docLabel').textContent = texts[lang].docLabel;
       document.getElementById('reportLabel').textContent = texts[lang].reportLabel;
-      document.getElementById('footerCopy').textContent = texts[lang].footerCopy;
-      document.getElementById('footerTelegram').textContent = texts[lang].footerTelegram;
-      document.getElementById('footerDiscord').textContent = texts[lang].footerDiscord;
-
       document.getElementById('langBtn').textContent = isEnglish ? 'RU' : 'EN';
     }
-
     document.getElementById('langBtn').addEventListener('click', toggleLanguage);
 
     document.getElementById('downloadBtn').addEventListener('click', ()=>{
-      showToast(isEnglish ? texts.en.downloadToast : texts.ru.downloadToast);
+      showToast(isEnglish ? 'Redirecting to download...' : 'Загрузка...');
       const a = document.createElement('a');
       a.href = DOWNLOAD_URL;
       a.setAttribute('download','Sellynt-1.16.5.zip');
@@ -289,22 +287,21 @@
       a.remove();
     });
 
-    function showToast(text='Подготовка загрузки…'){ 
-      const t = document.getElementById('toast'); 
-      t.textContent=text; t.classList.add('show'); 
+    function showToast(text){
+      const t = document.getElementById('toast');
+      t.textContent = text;
+      t.classList.add('show');
       setTimeout(()=>t.classList.remove('show'),2500);
     }
-
     function openSupport(e){ e.preventDefault(); showToast(isEnglish ? 'Documentation unavailable' : 'Документация пока недоступна'); }
     function openReport(e){ e.preventDefault(); window.open('https://t.me/vwxixv','_blank'); }
 
-    // Блокировка F12, Ctrl+Shift+I/J, Ctrl+U, правого клика
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12' || 
-          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
-          (e.ctrlKey && e.key === 'U')) e.preventDefault();
+    // Блокировка F12 и правого клика
+    document.addEventListener('keydown', function(e){
+      if(e.key==='F12' || (e.ctrlKey && e.shiftKey && (e.key==='I'||e.key==='J')) || (e.ctrlKey && e.key==='U')) e.preventDefault();
     });
-    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('contextmenu', e=>e.preventDefault());
   </script>
+
 </body>
 </html>
