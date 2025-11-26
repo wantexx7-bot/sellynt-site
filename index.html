@@ -84,6 +84,7 @@
       transition: transform 0.15s ease;
     }
     .icon-link img{width:24px;height:24px;object-fit:contain;}
+    .icon-link.discord img{width:28px;height:28px;} /* увеличена иконка Discord */
     .icon-link:hover{transform:translateY(-2px);}
 
     main{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
@@ -167,7 +168,7 @@
                 <img src="tg.png" alt="Telegram" />
                 <span id="telegramLabel">Telegram</span>
               </a>
-              <a class="icon-link" href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
+              <a class="icon-link discord" href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
                 <img src="discord.png" alt="Discord" />
                 <span id="discordLabel">Discord</span>
               </a>
@@ -187,7 +188,7 @@
     </main>
 
     <footer>
-      <div>© Sellynt — клиент для Minecraft 1.16.5</div>
+      <div id="footerCopy">© Sellynt — клиент для Minecraft 1.16.5</div>
       <div class="small">Ссылки: <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline" id="footerTelegram">Telegram</a> · <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:underline" id="footerDiscord">Discord</a></div>
     </footer>
   </div>
@@ -216,7 +217,11 @@
         discordLabel: "Discord",
         supportLabel: "Поддержка",
         docLabel: "Документация",
-        reportLabel: "Сообщить об ошибке"
+        reportLabel: "Сообщить об ошибке",
+        footerCopy: "© Sellynt — клиент для Minecraft 1.16.5",
+        footerTelegram: "Telegram",
+        footerDiscord: "Discord",
+        downloadToast: "Загрузка..."
       },
       en: {
         heroTitle: "Lightweight and minimalist client for Minecraft 1.16.5",
@@ -235,13 +240,18 @@
         discordLabel: "Discord",
         supportLabel: "Support",
         docLabel: "Documentation",
-        reportLabel: "Report Bug"
+        reportLabel: "Report Bug",
+        footerCopy: "© Sellynt — Minecraft 1.16.5 client",
+        footerTelegram: "Telegram",
+        footerDiscord: "Discord",
+        downloadToast: "Redirecting to download..."
       }
     };
 
     function toggleLanguage() {
       isEnglish = !isEnglish;
       const lang = isEnglish ? 'en' : 'ru';
+
       document.getElementById('heroTitle').textContent = texts[lang].heroTitle;
       document.getElementById('heroLead').textContent = texts[lang].heroLead;
       document.getElementById('f1').textContent = texts[lang].f1;
@@ -259,13 +269,17 @@
       document.getElementById('supportLabel').textContent = texts[lang].supportLabel;
       document.getElementById('docLabel').textContent = texts[lang].docLabel;
       document.getElementById('reportLabel').textContent = texts[lang].reportLabel;
+      document.getElementById('footerCopy').textContent = texts[lang].footerCopy;
+      document.getElementById('footerTelegram').textContent = texts[lang].footerTelegram;
+      document.getElementById('footerDiscord').textContent = texts[lang].footerDiscord;
+
       document.getElementById('langBtn').textContent = isEnglish ? 'RU' : 'EN';
     }
 
     document.getElementById('langBtn').addEventListener('click', toggleLanguage);
 
     document.getElementById('downloadBtn').addEventListener('click', ()=>{
-      showToast(isEnglish ? 'Redirecting to download...' : 'Загрузка...');
+      showToast(isEnglish ? texts.en.downloadToast : texts.ru.downloadToast);
       const a = document.createElement('a');
       a.href = DOWNLOAD_URL;
       a.setAttribute('download','Sellynt-1.16.5.zip');
