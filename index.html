@@ -87,12 +87,17 @@
       background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
       font-size:13px;
       font-weight:600;
+      transition: transform 0.15s ease;
     }
 
     .icon-link img{
-      width:18px;
-      height:18px;
+      width:24px;
+      height:24px;
       object-fit:contain;
+    }
+
+    .icon-link:hover{
+      transform:translateY(-2px);
     }
 
     main{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
@@ -110,8 +115,10 @@
       color:var(--accent);
       border:1px solid rgba(255,255,255,0.06);
       box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      transition: transform 0.15s ease;
     }
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);font-weight:600}
+    .btn:active{transform:translateY(1px)}
 
     .side{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -131,7 +138,6 @@
 
     @media(max-width:880px){main{grid-template-columns:1fr}.side{order:-1}}
     .logo, .btn{transition:transform .18s ease, box-shadow .18s ease}
-    .btn:active{transform:translateY(1px)}
     .logo:hover{transform:translateY(-2px)}
     a:focus, button:focus{outline:2px solid rgba(255,255,255,0.08);outline-offset:3px}
     .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:36px;background:rgba(255,255,255,0.04);color:var(--accent);padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(4px);display:none}
