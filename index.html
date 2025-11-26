@@ -200,7 +200,10 @@
     <div>
       <div class="section-title">Поддержка</div>
       <div class="social-links">
-        <a href="#" onclick="openSupport(event)">Документация</a>
+        function openSupport(e){
+  e.preventDefault();
+  window.location.href = 'documentation.html';
+}
         <a href="#" onclick="openReport(event)">Сообщить об ошибке</a>
       </div>
     </div>
