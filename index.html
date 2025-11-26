@@ -9,10 +9,10 @@
   <style>
     /* Monochrome minimalist design */
     :root{
-      --bg:#0b0b0b; /* near-black */
+      --bg:#0b0b0b;
       --surface:#0f0f0f;
       --muted:#a7a7a7;
-      --accent:#ffffff; /* white accents */
+      --accent:#ffffff;
       --glass: rgba(255,255,255,0.03);
       --radius:14px;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -46,7 +46,8 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;\    }
+      gap:20px;
+    }
     .brand{
       display:flex;
       align-items:center;
@@ -61,30 +62,41 @@
       overflow:hidden; 
     }
     .logo-img {
-  width:40px;
-  height:40px;
-  object-fit:contain;
-  display:block;
-  opacity:0.95;
-  background:none; /* ← убираем белый фон, если он был */
-}
-    .logo svg{width:34px;height:34px;opacity:0.98}
+      width:40px;
+      height:40px;
+      object-fit:contain;
+      display:block;
+      opacity:0.95;
+      background:none;
+    }
 
     .title{
       font-size:20px;font-weight:600;letter-spacing:-0.02em
     }
     .subtitle{color:var(--muted);font-size:13px;margin-top:4px}
 
-    .nav{display:flex;gap:8px;align-items:center}
-    .icon-link{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--accent);border:1px solid rgba(255,255,255,0.03);background:transparent;font-size:13px}
-    .icon-link .label{display:none}
-    @media(min-width:640px){.icon-link .label{display:inline}}
+    .icon-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:12px;
+      text-decoration:none;
+      color:var(--accent);
+      border:1px solid rgba(255,255,255,0.03);
+      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+      font-size:13px;
+      font-weight:600;
+    }
+
+    .icon-link img{
+      width:18px;
+      height:18px;
+      object-fit:contain;
+    }
 
     main{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
-
-    .hero{
-      padding:18px 6px;
-    }
+    .hero{padding:18px 6px}
     h1{margin:0;font-size:34px;line-height:1.05}
     p.lead{color:var(--muted);margin-top:12px;font-size:15px}
 
@@ -101,7 +113,6 @@
     }
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);font-weight:600}
 
-    /* side card */
     .side{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.03);
@@ -111,30 +122,18 @@
     .meta small{color:var(--muted)}
 
     .links{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-    .social{display:flex;gap:8px}
-    .social a{flex:1;text-decoration:none;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);display:inline-flex;align-items:center;gap:10px}
-    .social a .txt{font-weight:600}
+    .social{display:flex;flex-direction:column;gap:8px}
 
     .card-row{display:flex;gap:8px}
     .small{font-size:13px;color:var(--muted)}
 
     footer{margin-top:22px;border-top:1px dashed rgba(255,255,255,0.02);padding-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
 
-    /* responsive */
-    @media(max-width:880px){
-      main{grid-template-columns:1fr}
-      .side{order:-1}
-    }
-
-    /* subtle animation */
+    @media(max-width:880px){main{grid-template-columns:1fr}.side{order:-1}}
     .logo, .btn{transition:transform .18s ease, box-shadow .18s ease}
     .btn:active{transform:translateY(1px)}
     .logo:hover{transform:translateY(-2px)}
-
-    /* accessibility focus */
     a:focus, button:focus{outline:2px solid rgba(255,255,255,0.08);outline-offset:3px}
-
-    /* tiny download toast */
     .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:36px;background:rgba(255,255,255,0.04);color:var(--accent);padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(4px);display:none}
     .toast.show{display:block}
   </style>
@@ -143,16 +142,14 @@
   <div class="container" role="main">
     <header>
       <div class="brand">
-<div class="logo" aria-hidden="true">
-  <img src="logo2.png" alt="Sellynt Logo" class="logo-img" />
-</div>
+        <div class="logo" aria-hidden="true">
+          <img src="logo2.png" alt="Sellynt Logo" class="logo-img" />
+        </div>
         <div>
           <div class="title">Sellynt</div>
           <div class="subtitle">Клиент Minecraft 1.16.5 — минимализм, скорость, стабильность</div>
         </div>
       </div>
-
-      
     </header>
 
     <main>
@@ -169,10 +166,7 @@
 
         <div class="cta-row">
           <button class="btn" id="downloadBtn" aria-label="Скачать Sellynt для Minecraft 1.16.5">Скачать Sellynt (1.16.5)</button>
-          
         </div>
-
-        
       </section>
 
       <aside class="side" aria-label="Боковая панель">
@@ -193,15 +187,13 @@
           <div class="small">Сообщества</div>
           <div class="links">
             <div class="social">
-              <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">
-                <!-- telegram icon -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M21 4L3 10.5l4.5 1.5L20.5 6 21 4zM3 10.5V14l5-1.5L3 10.5z" fill="currentColor" opacity="0.9"/></svg>
-                <div class="txt">Telegram</div>
+              <a class="icon-link" href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">
+                <img src="tg.png" alt="Telegram" />
+                Telegram
               </a>
-              <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
-                <!-- discord icon -->
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 11.6c-.65 0-1.17.6-1.17 1.33s.52 1.33 1.17 1.33c.64 0 1.17-.6 1.17-1.33s-.53-1.33-1.17-1.33zm7 0c-.65 0-1.17.6-1.17 1.33s.52 1.33 1.17 1.33c.64 0 1.17-.6 1.17-1.33s-.53-1.33-1.17-1.33z" fill="currentColor" opacity="0.95"/></svg>
-                <div class="txt">Discord</div>
+              <a class="icon-link" href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
+                <img src="discord.png" alt="Discord" />
+                Discord
               </a>
             </div>
           </div>
@@ -227,8 +219,7 @@
   <div class="toast" id="toast">Подготовка загрузки…</div>
 
   <script>
-    // Replace this URL with your hosted build/download link.
-    const DOWNLOAD_URL = 'Sellynt-Loader.exe'; // <-- change to actual URL when uploaded
+    const DOWNLOAD_URL = 'Sellynt-Loader.exe';
 
     function showToast(text = 'Подготовка загрузки…'){
       const t = document.getElementById('toast');
@@ -237,23 +228,26 @@
     }
 
     document.getElementById('downloadBtn').addEventListener('click', ()=>{
-      // show toast and trigger download
       showToast('Перенаправление на загрузку...');
-      // create temporary link
       const a = document.createElement('a');
       a.href = DOWNLOAD_URL;
       a.setAttribute('download','Sellynt-1.16.5.zip');
       a.rel = 'noopener noreferrer';
       document.body.appendChild(a);
-      // try to open in new tab then click
       a.click();
       a.remove();
     });
 
-    // quick helpers for non-implemented links
     function openSupport(e){ e.preventDefault(); showToast('Документация пока недоступна'); }
     function openReport(e){ e.preventDefault(); window.open('https://t.me/vwxixv','_blank'); }
-  </script>
 
+    // Блокировка F12, Ctrl+Shift+I/J, Ctrl+U, правого клика
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+          (e.ctrlKey && e.key === 'U')) e.preventDefault();
+    });
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
 </body>
 </html>
