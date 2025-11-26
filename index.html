@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sellynt Client — Minecraft 1.16.5</title>
-  <meta name="description" content="Sellynt Client — минималистичный клиент Minecraft 1.16.5. Скачать, новости, сообщества (Telegram / Discord)." />
   <style>
     :root {
       --bg-dark: #0a0a0a;
@@ -59,10 +58,7 @@
       place-items: center;
     }
     .logo img { width: 48px; height: 48px; object-fit: contain; }
-    .titles {
-      display: flex;
-      flex-direction: column;
-    }
+    .titles { display: flex; flex-direction: column; }
     .titles .title { font-size: 24px; font-weight: 700; }
     .titles .subtitle { font-size: 14px; color: var(--muted); margin-top: 2px; }
     .lang-btn {
@@ -72,6 +68,7 @@
       background: var(--btn-gradient);
       cursor: pointer;
       font-weight: 600;
+      color: var(--accent);
       transition: transform 0.15s ease;
     }
     .lang-btn:active { transform: translateY(1px); }
@@ -80,16 +77,8 @@
       grid-template-columns: 1fr 360px;
       gap: 32px;
     }
-    .hero h1 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .hero p {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
+    .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+    .hero p { font-size: 16px; color: var(--muted); margin-bottom: 24px; }
     .features { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
     .chip {
       padding: 8px 16px;
@@ -111,6 +100,7 @@
       align-items: center;
       gap: 12px;
       transition: transform 0.15s ease;
+      color: #ffffff;
     }
     .btn-download:active { transform: translateY(1px); }
     .btn-download img { width: 24px; height: 24px; }
@@ -164,13 +154,14 @@
       <div class="brand">
         <div class="logo"><img src="logo2.png" alt="Sellynt Logo"></div>
         <div class="titles">
-          <div class="title" id="title">Sellynt Client</div>
-          <div class="subtitle" id="subtitle">Минималистичный клиент Minecraft 1.16.5</div>
+          <div class="title">Sellynt Client</div>
+          <div class="subtitle">Минималистичный клиент Minecraft 1.16.5</div>
         </div>
       </div>
       <button class="lang-btn" id="langBtn">EN</button>
     </header>
 
+```
 <main>
   <section class="hero">
     <h1 id="heroTitle">Лёгкий и минималистичный клиент для Minecraft 1.16.5</h1>
@@ -182,35 +173,35 @@
       <span class="chip" id="f4">Простая установка</span>
     </div>
     <button class="btn-download" id="downloadBtn">
-      <img src="download.png" alt="Download Icon"> <span id="downloadText">Скачать Sellynt</span>
+      <img src="dw.png" alt="Download Icon"> <span id="downloadText">Скачать Sellynt</span>
     </button>
   </section>
 
   <aside class="side">
     <div>
-      <div class="section-title" id="versionLabel">Версия</div>
-      <div class="small" id="versionText">1.0.0 — Minecraft 1.16.5</div>
+      <div class="section-title">Версия</div>
+      <div class="small">1.0.0 — Minecraft 1.16.5</div>
     </div>
     <div>
-      <div class="section-title" id="sizeLabel">Размер</div>
-      <div class="small" id="sizeText">~12 MB</div>
+      <div class="section-title">Размер</div>
+      <div class="small">~12 MB</div>
     </div>
     <div>
-      <div class="section-title" id="communityLabel">Сообщества</div>
+      <div class="section-title">Сообщества</div>
       <div class="social-links">
         <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">
-          <img src="tg.png" alt="Telegram"><span id="telegramLabel">Telegram</span>
+          <img src="tg.png" alt="Telegram">Telegram
         </a>
         <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
-          <img src="discord.png" alt="Discord"><span id="discordLabel">Discord</span>
+          <img src="discord.png" alt="Discord">Discord
         </a>
       </div>
     </div>
     <div>
-      <div class="section-title" id="supportLabel">Поддержка</div>
+      <div class="section-title">Поддержка</div>
       <div class="social-links">
-        <a href="#" onclick="openSupport(event)" id="docLabel">Документация</a>
-        <a href="#" onclick="openReport(event)" id="reportLabel">Сообщить об ошибке</a>
+        <a href="#" onclick="openSupport(event)">Документация</a>
+        <a href="#" onclick="openReport(event)">Сообщить об ошибке</a>
       </div>
     </div>
   </aside>
@@ -230,76 +221,34 @@
     const DOWNLOAD_URL = 'Sellynt-Loader.exe';
     let isEnglish = false;
     const texts = {
-      ru: {
-        heroTitle: "Лёгкий и минималистичный клиент для Minecraft 1.16.5",
-        heroLead: "Sellynt — это клиент с аккуратным интерфейсом, стабильными модами и быстрым запуском. Подходит для одиночной игры и серверов 1.16.5.",
-        f1: "Совместимость 1.16.5", f2: "Оптимизация FPS", f3: "Минималистичный GUI", f4: "Простая установка",
-        downloadText: "Скачать Sellynt",
-        versionLabel: "Версия", versionText: "1.0.0 — Minecraft 1.16.5",
-        sizeLabel: "Размер", sizeText: "~12 MB",
-        communityLabel: "Сообщества", telegramLabel: "Telegram", discordLabel: "Discord",
-        supportLabel: "Поддержка", docLabel: "Документация", reportLabel: "Сообщить об ошибке"
-      },
-      en: {
-        heroTitle: "Lightweight and minimalist client for Minecraft 1.16.5",
-        heroLead: "Sellynt is a client with a clean interface, stable mods, and fast launch. Suitable for singleplayer and 1.16.5 servers.",
-        f1: "Compatibility 1.16.5", f2: "FPS Optimization", f3: "Minimalist GUI", f4: "Easy Installation",
-        downloadText: "Download Sellynt",
-        versionLabel: "Version", versionText: "1.0.0 — Minecraft 1.16.5",
-        sizeLabel: "Size", sizeText: "~12 MB",
-        communityLabel: "Communities", telegramLabel: "Telegram", discordLabel: "Discord",
-        supportLabel: "Support", docLabel: "Documentation", reportLabel: "Report Bug"
-      }
+      ru: { heroTitle:"Лёгкий и минималистичный клиент для Minecraft 1.16.5", heroLead:"Sellynt — это клиент с аккуратным интерфейсом, стабильными модами и быстрым запуском. Подходит для одиночной игры и серверов 1.16.5.", f1:"Совместимость 1.16.5", f2:"Оптимизация FPS", f3:"Минималистичный GUI", f4:"Простая установка", downloadText:"Скачать Sellynt" },
+      en: { heroTitle:"Lightweight and minimalist client for Minecraft 1.16.5", heroLead:"Sellynt is a client with a clean interface, stable mods, and fast launch. Suitable for singleplayer and 1.16.5 servers.", f1:"Compatibility 1.16.5", f2:"FPS Optimization", f3:"Minimalist GUI", f4:"Easy Installation", downloadText:"Download Sellynt" }
     };
-    function toggleLanguage() {
+    function toggleLanguage(){
       isEnglish = !isEnglish;
-      const lang = isEnglish ? 'en' : 'ru';
-      document.getElementById('heroTitle').textContent = texts[lang].heroTitle;
-      document.getElementById('heroLead').textContent = texts[lang].heroLead;
-      document.getElementById('f1').textContent = texts[lang].f1;
-      document.getElementById('f2').textContent = texts[lang].f2;
-      document.getElementById('f3').textContent = texts[lang].f3;
-      document.getElementById('f4').textContent = texts[lang].f4;
-      document.getElementById('downloadText').textContent = texts[lang].downloadText;
-      document.getElementById('versionLabel').textContent = texts[lang].versionLabel;
-      document.getElementById('versionText').textContent = texts[lang].versionText;
-      document.getElementById('sizeLabel').textContent = texts[lang].sizeLabel;
-      document.getElementById('sizeText').textContent = texts[lang].sizeText;
-      document.getElementById('communityLabel').textContent = texts[lang].communityLabel;
-      document.getElementById('telegramLabel').textContent = texts[lang].telegramLabel;
-      document.getElementById('discordLabel').textContent = texts[lang].discordLabel;
-      document.getElementById('supportLabel').textContent = texts[lang].supportLabel;
-      document.getElementById('docLabel').textContent = texts[lang].docLabel;
-      document.getElementById('reportLabel').textContent = texts[lang].reportLabel;
-      document.getElementById('langBtn').textContent = isEnglish ? 'RU' : 'EN';
+      const lang = isEnglish?'en':'ru';
+      document.getElementById('heroTitle').textContent=texts[lang].heroTitle;
+      document.getElementById('heroLead').textContent=texts[lang].heroLead;
+      document.getElementById('f1').textContent=texts[lang].f1;
+      document.getElementById('f2').textContent=texts[lang].f2;
+      document.getElementById('f3').textContent=texts[lang].f3;
+      document.getElementById('f4').textContent=texts[lang].f4;
+      document.getElementById('downloadText').textContent=texts[lang].downloadText;
+      document.getElementById('langBtn').textContent=isEnglish?'RU':'EN';
     }
-    document.getElementById('langBtn').addEventListener('click', toggleLanguage);
+    document.getElementById('langBtn').addEventListener('click',toggleLanguage);
 
-    document.getElementById('downloadBtn').addEventListener('click', ()=>{
-      showToast(isEnglish ? 'Redirecting to download...' : 'Загрузка...');
-      const a = document.createElement('a');
-      a.href = DOWNLOAD_URL;
+    document.getElementById('downloadBtn').addEventListener('click',()=>{
+      const a=document.createElement('a');
+      a.href=DOWNLOAD_URL;
       a.setAttribute('download','Sellynt-1.16.5.zip');
-      a.rel = 'noopener noreferrer';
       document.body.appendChild(a);
       a.click();
       a.remove();
     });
 
-    function showToast(text){
-      const t = document.getElementById('toast');
-      t.textContent = text;
-      t.classList.add('show');
-      setTimeout(()=>t.classList.remove('show'),2500);
-    }
-    function openSupport(e){ e.preventDefault(); showToast(isEnglish ? 'Documentation unavailable' : 'Документация пока недоступна'); }
+    function openSupport(e){ e.preventDefault(); alert('Документация пока недоступна'); }
     function openReport(e){ e.preventDefault(); window.open('https://t.me/vwxixv','_blank'); }
-
-    // Блокировка F12 и правого клика
-    document.addEventListener('keydown', function(e){
-      if(e.key==='F12' || (e.ctrlKey && e.shiftKey && (e.key==='I'||e.key==='J')) || (e.ctrlKey && e.key==='U')) e.preventDefault();
-    });
-    document.addEventListener('contextmenu', e=>e.preventDefault());
   </script>
 
 </body>
