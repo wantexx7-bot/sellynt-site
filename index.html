@@ -43,11 +43,7 @@
       align-items: center;
       margin-bottom: 40px;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    .brand { display: flex; align-items: center; gap: 16px; }
     .logo {
       width: 64px;
       height: 64px;
@@ -72,11 +68,7 @@
       transition: transform 0.15s ease;
     }
     .lang-btn:active { transform: translateY(1px); }
-    main {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 32px;
-    }
+    main { display: grid; grid-template-columns: 1fr 360px; gap: 32px; }
     .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
     .hero p { font-size: 16px; color: var(--muted); margin-bottom: 24px; }
     .features { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
@@ -152,7 +144,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <div class="logo"><img src="logo2.png" alt="Sellynt Logo"></div>
+        <div class="logo"><img src="../icons/logo2.png" alt="Sellynt Logo"></div>
         <div class="titles">
           <div class="title">Sellynt Client</div>
           <div class="subtitle">Минималистичный клиент Minecraft 1.16.5</div>
@@ -160,7 +152,8 @@
       </div>
       <button class="lang-btn" id="langBtn">EN</button>
     </header>
-    
+
+```
 <main>
   <section class="hero">
     <h1 id="heroTitle">Лёгкий и минималистичный клиент для Minecraft 1.16.5</h1>
@@ -172,7 +165,7 @@
       <span class="chip" id="f4">Простая установка</span>
     </div>
     <button class="btn-download" id="downloadBtn">
-      <img src="dw.png" alt="Download Icon"> <span id="downloadText">Скачать Sellynt</span>
+      <img src="../icons/dw.png" alt="Download Icon"> <span id="downloadText">Скачать Sellynt</span>
     </button>
   </section>
 
@@ -189,17 +182,17 @@
       <div class="section-title">Сообщества</div>
       <div class="social-links">
         <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">
-          <img src="tg.png" alt="Telegram">Telegram
+          <img src="../icons/tg.png" alt="Telegram">Telegram
         </a>
         <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">
-          <img src="discord.png" alt="Discord">Discord
+          <img src="../icons/discord.png" alt="Discord">Discord
         </a>
       </div>
     </div>
     <div>
       <div class="section-title">Поддержка</div>
       <div class="social-links">
-        <a href="#" onclick="openSupport(event)">Документация</a>
+        <a href="../documentation/index.html">Документация</a>
         <a href="#" onclick="openReport(event)">Сообщить об ошибке</a>
       </div>
     </div>
@@ -210,6 +203,7 @@
   <div>© Sellynt Client — Minecraft 1.16.5</div>
   <div class="small">Ссылки: <a href="https://t.me/sellyntoff" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://discord.gg/hFn322f9" target="_blank" rel="noopener noreferrer">Discord</a></div>
 </footer>
+```
 
   </div>
 
@@ -245,10 +239,6 @@
       a.remove();
     });
 
-    function openSupport(e){
-  e.preventDefault();
-  window.location.href = 'documentation.html';
-}
     function openReport(e){ e.preventDefault(); window.open('https://t.me/vwxixv','_blank'); }
   </script>
 
