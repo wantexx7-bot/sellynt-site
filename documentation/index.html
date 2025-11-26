@@ -1,0 +1,124 @@
+<!doctype html>
+
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sellynt Client — Документация</title>
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-gradient: linear-gradient(180deg, #0a0a0a 0%, #070707 100%);
+      --surface: #121212;
+      --accent: #ffffff;
+      --muted: #a7a7a7;
+      --btn-gradient: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      --radius: 16px;
+      font-family: 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-gradient);
+      color: var(--accent);
+      font-size: 16px;
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container {
+      max-width: 960px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .logo { width: 64px; height: 64px; border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,0.05); display: grid; place-items: center; }
+    .logo img { width: 48px; height: 48px; object-fit: contain; }
+    .titles { display: flex; flex-direction: column; }
+    .titles .title { font-size: 24px; font-weight: 700; }
+    .titles .subtitle { font-size: 14px; color: var(--muted); margin-top: 2px; }
+    main { display: flex; flex-direction: column; gap: 32px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+    h2 { font-size: 20px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+    p, li { font-size: 16px; color: var(--accent); margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 24px; }
+    .btn-back {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      background: var(--btn-gradient);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      align-self: start;
+      margin-top: 16px;
+      color: #ffffff;
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
+    .btn-back:active { transform: translateY(1px); }
+    footer { margin-top: 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    @media(max-width: 880px){ body { padding: 20px 10px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo"><img src="../icons/logo2.png" alt="Sellynt Logo"></div>
+        <div class="titles">
+          <div class="title">Sellynt Client</div>
+          <div class="subtitle">Документация</div>
+        </div>
+      </div>
+    </header>
+
+```
+<main>
+  <h1>Документация Sellynt Client</h1>
+  <p>Добро пожаловать в документацию Sellynt Client! Здесь вы найдете инструкции по установке, настройке и использованию клиента для Minecraft 1.16.5.</p>
+
+  <h2>Установка</h2>
+  <ul>
+    <li>Скачайте последний релиз с официального сайта.</li>
+    <li>Запустите установщик и следуйте инструкциям.</li>
+    <li>После установки запустите клиент через лаунчер Minecraft.</li>
+  </ul>
+
+  <h2>Особенности</h2>
+  <ul>
+    <li>Совместимость с Minecraft 1.16.5</li>
+    <li>Оптимизация FPS для плавного игрового процесса</li>
+    <li>Минималистичный графический интерфейс</li>
+    <li>Простая установка и настройка</li>
+  </ul>
+
+  <h2>Поддержка</h2>
+  <p>Если возникли вопросы или проблемы, посетите наше сообщество:</p>
+  <ul>
+    <li><a href="https://t.me/sellyntoff" target="_blank">Telegram</a></li>
+    <li><a href="https://discord.gg/hFn322f9" target="_blank">Discord</a></li>
+  </ul>
+
+  <a href="../home/index.html" class="btn-back">← Назад на главную</a>
+</main>
+
+<footer>
+  <div>© Sellynt Client — Minecraft 1.16.5</div>
+  <div class="small">Ссылки: 
+    <a href="https://t.me/sellyntoff" target="_blank">Telegram</a> · 
+    <a href="https://discord.gg/hFn322f9" target="_blank">Discord</a>
+  </div>
+</footer>
+```
+
+  </div>
+</body>
+</html>
